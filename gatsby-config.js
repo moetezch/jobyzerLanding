@@ -4,6 +4,8 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -17,6 +19,19 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-122171355-2",
+      }
+    },
+     {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: 'https://jobyzer.us19.list-manage.com/subscribe/post?u=230ef91315833f1e0df75af48&amp;id=ccb012345e', // see instructions section below
+      },
+    }
   ],
 }
+
