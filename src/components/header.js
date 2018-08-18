@@ -14,7 +14,7 @@ class Header extends Component {
             </Link>
             
             <span className="navbar-item">
-            <a className="button is-white is-outlined is-large" href="http://beta.jobyzer.com" target='_blanc'>
+            <a className="button is-white is-outlined is-large" href="https://beta.jobyzer.com" target='_blanc'>
                 <span className="icon">
                     <i className="fa fa-flask  fa-2x"></i>
                 </span>

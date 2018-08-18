@@ -10,30 +10,30 @@ import addToMailchimp from 'gatsby-plugin-mailchimp'
 export default class IndexPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: '',msg:''};
+        this.state = { value: '', msg: '' };
         this.handleChange = this.handleChange.bind(this);
-      }
-      handleChange(event) {
-        this.setState({value: event.target.value});
-      }
+    }
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
 
     _handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         if (!this.state.value) {
-            this.setState({msg: 'Please provide your email'});
-        }else if (this.state.value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(this.state.value)) {
-            this.setState({msg: 'Please provide a valid email'});
-        }else{
+            this.setState({ msg: 'Please provide your email' });
+        } else if (this.state.value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(this.state.value)) {
+            this.setState({ msg: 'Please provide a valid email' });
+        } else {
             this.setState(() => ({ msg: '' }));
             const result = await addToMailchimp(this.state.value)
             console.log(result);
-            if (result.result==="success") {
-                this.setState({msg: result.msg});
+            if (result.result === "success") {
+                this.setState({ msg: result.msg });
             }
-            else{
-               
-                this.setState({msg: 'You are already subscribed :) '});
+            else {
+
+                this.setState({ msg: 'You are already subscribed :) ' });
             }
         }
     }
@@ -46,11 +46,12 @@ export default class IndexPage extends Component {
                         <div className="column is-6 is-offset-3">
                             <img src={logo} alt="jobyzer" />
                             <h1 className="title has-text-white">
-                                Coming Soon
+                                Launching Soon!
                              </h1>
 
                             <h2 className="subtitle has-text-white">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque incidunt porro, assumenda veniam harum ex minima, adipisci unde voluptatum ab expedita asperiores at facere maxime quod non mollitia fuga pariatur?
+                                Organize, Track and Analyze your job search. <br/>
+                                Leave your email and we'll let you know once the site goes live.
                             </h2>
                             <div className="box">
                                 <form onSubmit={this._handleSubmit}>
@@ -71,22 +72,31 @@ export default class IndexPage extends Component {
                             </div>
                         </div>
                         <br />
+                        <div>
+                        <h2 className="subtitle has-text-white">
+                        You are already hunting your dream job ? Try out our <a className="button is-white is-outlined" href="https://beta.jobyzer.com" target='_blanc' >                <span className="icon">
+                        <i className="fa fa-flask  fa-2x"></i>
+                    </span>
+                    <span>Beta</span></a>
+                    </h2>
+                        </div>
+                        <br />
                         <br />
                         <div className="columns">
                             <div className="column is-one-third">
-                                <p><img src={jobImage} alt="job" style={{ maxHeight: "180px", maxWidth: "180px" }} /></p>
+                                <p><img src={jobImage} alt="Organize" style={{ maxHeight: "180px", maxWidth: "180px" }} /></p>
                                 <p className="title has-text-white">Organize</p>
-                                <p className="subtitle has-text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium cumque eum exercitationem ipsum unde adipisci, consectetur, impedit ratione deserunt id facilis sequi? Repudiandae quas placeat expedita esse veniam ab tempora!</p>
-                            </div>
-                            <div classn="column is-one-third">
-                                <p><img src={analyticImage} alt="job" style={{ maxHeight: "180px", maxWidth: "180px" }} /></p>
-                                <p className="title has-text-white">Track</p>
-                                <p className="subtitle has-text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium cumque eum exercitationem ipsum unde adipisci, consectetur, impedit ratione deserunt id facilis sequi? Repudiandae quas placeat expedita esse veniam ab tempora!</p>
+                                <p className="subtitle has-text-white">Replace your spreadsheet with an elegant and intuitive web-based tracker.</p>
                             </div>
                             <div className="column is-one-third">
-                                <p><img src={bookmarkImage} alt="job" style={{ maxHeight: "180px", maxWidth: "180px" }} /></p>
+                                <p><img src={analyticImage} alt="Track" style={{ maxHeight: "180px", maxWidth: "180px" }} /></p>
+                                <p className="title has-text-white">Track</p>
+                                <p className="subtitle has-text-white">View different metrics on how your job hunt is going. Track the number of applications, replies and interviews over time. </p>
+                            </div>
+                            <div className="column is-one-third">
+                                <p><img src={bookmarkImage} alt="Bookmark" style={{ maxHeight: "180px", maxWidth: "180px" }} /></p>
                                 <p className="title has-text-white">Bookmark</p>
-                                <p className="subtitle has-text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium cumque eum exercitationem ipsum unde adipisci, consectetur, impedit ratione deserunt id facilis sequi? Repudiandae quas placeat expedita esse veniam ab tempora!</p>
+                                <p className="subtitle has-text-white">Find a job while browsing the web? Bookmark it and return later to apply.</p>
                             </div>
                         </div>
                     </div>
